@@ -1,24 +1,24 @@
-// Place url in a constant variable
+// url in variable
 let url = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json"
 
-// Fetch the JSON data and console log it
+// Fetch the JSON 
 d3.json(url).then(function(data) {
   console.log(data);
 });
 
-// Initialize the dashboard at start up 
+// Initialize the dashboard
 function init() {
 
-    // Use D3 to select the dropdown menu
+    // Use D3 select dropdown
     let dropdownMenu = d3.select("#selDataset");
 
-    // Use D3 to get sample names and populate the drop-down selector
+    // Use D3 to get sample names
     d3.json(url).then((data) => {
         
-        // Set a variable for the sample names
+        // Set a variable for the sample 
         let names = data.names;
 
-        // Add  samples to dropdown menu
+        // Add  samples to dropdown
         names.forEach((id) => {
 
             // Log the value of id for each iteration of the loop
@@ -36,16 +36,14 @@ function init() {
         console.log(sample_one);
 
         // Build the initial plots
-        buildMetadata(sample_one);
-        buildBarChart(sample_one);
-        buildBubbleChart(sample_one);
-        buildGaugeChart(sample_one);
-
+        Meta(sample_one);
+        BarChart(sample_one);
+        BubbleChart(sample_one);
     });
 };
 
 // Function that populates metadata info
-function buildMetadata(sample) {
+function Meta(sample) {
 
     // Use D3 to retrieve all of the data
     d3.json(url).then((data) => {
@@ -78,7 +76,7 @@ function buildMetadata(sample) {
 };
 
 // Function that builds the bar chart
-function buildBarChart(sample) {
+function BarChart(sample) {
 
     // Use D3 to retrieve all of the data
     d3.json(url).then((data) => {
@@ -125,7 +123,7 @@ function buildBarChart(sample) {
 };
 
 // Function that builds the bubble chart
-function buildBubbleChart(sample) {
+function BubbleChart(sample) {
 
     // Use D3 to retrieve all of the data
     d3.json(url).then((data) => {
@@ -179,10 +177,9 @@ function optionChanged(value) {
     console.log(value); 
 
     // Call all functions 
-    buildMetadata(value);
-    buildBarChart(value);
-    buildBubbleChart(value);
-    buildGaugeChart(value);
+    Meta(value);
+    BarChart(value);
+    BubbleChart(value);
 };
 
 // Call the initialize function
